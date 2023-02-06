@@ -33,7 +33,7 @@ def register_all_filters(dp):
 
 def register_all_handlers(dp):
     register_admin(dp)
-    # register_user(dp)
+    register_user(dp)
     # register_echo(dp)
 
 
@@ -48,7 +48,7 @@ async def main():
         f"postgresql+asyncpg://{config.db.user}:{config.db.password}@{config.db.host}/{config.db.database}",
         future=True
     )
-    entry_sdk.init(
+    sentry_sdk.init(
         dsn="https://567497a3fb844a188064f8553b5d0b9b@o4504582216613888.ingest.sentry.io/4504630327836672",
 
         # Set traces_sample_rate to 1.0 to capture 100%

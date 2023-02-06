@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime
 
 from aiogram import Dispatcher, types
@@ -78,7 +79,9 @@ async def channel_send(c: CallbackQuery, rec_id, scheduler):
             msg = await session.execute(select(Msg).where(Msg.task == i.id, Msg.queue == i.queue))
             msgs = msg.scalars()
             for d in msgs:
-                await c.bot.copy_message(from_chat_id=i.admin_id, chat_id=channel_id.tg_bot.channel_id, message_id=d.msg_id)
+                for h in channel_id.tg_bot.channel_id:
+                    await c.bot.copy_message(from_chat_id=i.admin_id, chat_id=h, message_id=d.msg_id)
+                    await asyncio.sleep(1)
 
 
 async def back(c: CallbackQuery, state: FSMContext):
