@@ -66,6 +66,7 @@ async def start(c: CallbackQuery, state: FSMContext, scheduler: AsyncIOScheduler
 async def channel_send(c: CallbackQuery, rec_id, scheduler):
     db_session = c.bot.get("db")
     channel_id = load_config(".env")
+    await c.answer(text=str(channel_id))
     async with db_session() as session:
         data = await session.execute(select(Task).where(Task.id == rec_id))
         datas = data.scalars()
