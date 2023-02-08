@@ -22,7 +22,7 @@ jobs:
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       with:
         source: "."
-        target: "/home/Bot/ImportExport"
+        target: "/home/Bot/autopost"
 
     - name: Command using from script
       uses: appleboy/ssh-action@master
