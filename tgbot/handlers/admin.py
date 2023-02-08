@@ -57,7 +57,7 @@ async def start(c: CallbackQuery, state: FSMContext, scheduler: AsyncIOScheduler
             count += 1
         await session.commit()
     await state.reset_data()
-    scheduler.add_job(channel_send, 'interval', hours=1, start_date=datetime.now(), args=(c, ses.id, scheduler), id='msg_send')
+    scheduler.add_job(channel_send, 'interval', seconds=10, start_date=datetime.now(), args=(c, ses.id, scheduler), id='msg_send')
     await c.message.delete()
     await c.message.answer("⏳")
     await c.message.answer("Avto e\'lon boshlandi! 😄 \nTugashi bilan sizga xabar beramiz.\nYangi e\'lon berish uchun /start ni bosing")
