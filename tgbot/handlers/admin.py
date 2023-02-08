@@ -79,7 +79,7 @@ async def channel_send(c: CallbackQuery, rec_id, scheduler):
             await session.commit()
             msg = await session.execute(select(Msg).where(Msg.task == i.id, Msg.queue == i.queue))
             msgs = msg.scalars()
-            channel_ids = ['-1527895962', '-1161832747']
+            channel_ids = [-1001161832747, -1001527895962]
             for d in msgs:
                 for h in channel_ids:
                     await c.bot.copy_message(from_chat_id=i.admin_id, chat_id=h, message_id=d.msg_id)
