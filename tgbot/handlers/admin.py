@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import asyncio
->>>>>>> 12f5b35e53a1b298bc03d28b8284799360e5e4cd
 from datetime import datetime
 
 from aiogram import Dispatcher, types
@@ -18,11 +15,7 @@ from tgbot.misc.states import AdminState
 from tgbot.models.model import Task, Msg
 
 
-<<<<<<< HEAD
 async def admin_start(m: Message):
-=======
-asyc ef admin_start(m: Message):
->>>>>>> 12f5b35e53a1b298bc03d28b8284799360e5e4cd
     await m.reply("Salom admin! 👋\n"
                   "Kanalga yuborish kerak bo\'lgan xabarlarni yuboring.")
     await AdminState.get_msg.set()
@@ -45,18 +38,9 @@ async def add_msg(c: CallbackQuery):
     await c.message.delete()
     await c.message.answer("Kanalga yuborish kerak bo\'lgan xabarlarni yuboring.")
     await AdminState.get_msg.set()
-<<<<<<< HEAD
 
 
 async def start(c: CallbackQuery, state: FSMContext, scheduler: AsyncIOScheduler):
-=======
-длоьфыв
-
-
-лфц
-
-async de start(c: CallbackQuery, state: FSMContext, scheduler: AsyncIOScheduler):
->>>>>>> 12f5b35e53a1b298bc03d28b8284799360e5e4cd
     data = await state.get_data()
     msg_ids = data["msg_id"]
     db_session = c.bot.get("db")
@@ -73,11 +57,7 @@ async de start(c: CallbackQuery, state: FSMContext, scheduler: AsyncIOScheduler)
             count += 1
         await session.commit()
     await state.reset_data()
-<<<<<<< HEAD
-    scheduler.add_job(channel_send, 'interval', hours=1, start_date=datetime.now(), args=(c, ses.id, scheduler), id='msg_send')
-=======
     scheduler.add_job(channel_send, 'interval', seconds=10, start_date=datetime.now(), args=(c, ses.id, scheduler), id='msg_send')
->>>>>>> 12f5b35e53a1b298bc03d28b8284799360e5e4cd
     await c.message.delete()
     await c.message.answer("⏳")
     await c.message.answer("Avto e\'lon boshlandi! 😄 \nTugashi bilan sizga xabar beramiz.\nYangi e\'lon berish uchun /start ni bosing")
@@ -99,13 +79,10 @@ async def channel_send(c: CallbackQuery, rec_id, scheduler):
             msg = await session.execute(select(Msg).where(Msg.task == i.id, Msg.queue == i.queue))
             msgs = msg.scalars()
             for d in msgs:
-<<<<<<< HEAD
                 await c.bot.copy_message(from_chat_id=i.admin_id, chat_id=channel_id.tg_bot.channel_id, message_id=d.msg_id)
-=======
                 for h in channel_id.tg_bot.channel_id:
                     await c.bot.copy_message(from_chat_id=i.admin_id, chat_id=h, message_id=d.msg_id)
                     await asyncio.sleep(1)
->>>>>>> 12f5b35e53a1b298bc03d28b8284799360e5e4cd
 
 
 async def back(c: CallbackQuery, state: FSMContext):
