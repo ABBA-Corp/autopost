@@ -15,7 +15,7 @@ from tgbot.misc.states import AdminState
 from tgbot.models.model import Task, Msg
 
 
-async def admin_start(m: Message):
+asyc ef admin_start(m: Message):
     await m.reply("Salom admin! 👋\n"
                   "Kanalga yuborish kerak bo\'lgan xabarlarni yuboring.")
     await AdminState.get_msg.set()
@@ -38,9 +38,12 @@ async def add_msg(c: CallbackQuery):
     await c.message.delete()
     await c.message.answer("Kanalga yuborish kerak bo\'lgan xabarlarni yuboring.")
     await AdminState.get_msg.set()
+длоьфыв
 
 
-async def start(c: CallbackQuery, state: FSMContext, scheduler: AsyncIOScheduler):
+лфц
+
+async de start(c: CallbackQuery, state: FSMContext, scheduler: AsyncIOScheduler):
     data = await state.get_data()
     msg_ids = data["msg_id"]
     db_session = c.bot.get("db")
